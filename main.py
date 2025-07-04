@@ -4,6 +4,8 @@ import pyaudio
 import webbrowser
 import requests
 
+
+
 engine = pyttsx3.init()
 r = sr.Recognizer()
 newsapi = '********************************'
@@ -23,7 +25,7 @@ def processCommand(c):
         webbrowser.open("www.linkedin.com")
     elif 'open github' in c.lower():
         webbrowser.open("www.github.com")
-    elif "tell" in c.lower():
+    elif "news" in c.lower():
         r = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&apiKey={newsapi}")
         data = r.json()
         for i, article in enumerate(data["articles"]):
@@ -54,13 +56,14 @@ if __name__ == '__main__':
                         
                     if word.lower() =='jarvis':
                         print("Jarvis Activated")
+                        speak("Jarvis Activated")
                         # command_mode = True
 
                         while True:
                             with sr.Microphone() as source:
                                 print("Listening for command....")
                                 r.adjust_for_ambient_noise(source)
-                                audio = r.listen(source)
+                                audio = r.listen(source, timeout=2, phrase_time_limit=10)
                                 command =  r.recognize_google(audio)
                                 print("Your Command is : ",command)
                                 processCommand(command)
