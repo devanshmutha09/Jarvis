@@ -17,7 +17,7 @@ Jarvis is a simple voice assistant built using Python. It listens for your voice
 ## ⚙️ Setup Instructions (All Steps in One Place)
 
 ### 1. Clone the Repository
-git clone https://github.com/yourusername/jarvis-assistant.git
+git clone https://github.com/devanshmutha09/Jarvis.git
 cd jarvis-assistant 
 
 ### 2. Install Required Python Libraries
